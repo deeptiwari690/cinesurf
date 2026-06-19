@@ -1,4 +1,4 @@
-import { tmdb } from "./fetch";
+import { tmdb } from "./tmdb";
 import { movieListSchema, movieDetailSchema, genreListSchema } from "./schemas";
 
 export async function getPopularMovies() {
