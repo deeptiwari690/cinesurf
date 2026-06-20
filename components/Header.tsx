@@ -3,10 +3,10 @@ import Logo from "@/components/ui/Logo";
 
 export default function Header() {
   return (
-    <header className="flex items-center justify-between px-6 py-4">
+    <header className="flex items-center justify-between">
       <Link href="/" className="flex items-center gap-2">
-        <Logo className="h-8 w-auto text-accent" />
-        <span className="text-xl font-bold">
+        <Logo className="h-10 w-auto text-accent" />
+        <span className="text-2xl font-bold">
           Cine<span className="text-accent">Surf</span>
         </span>
       </Link>

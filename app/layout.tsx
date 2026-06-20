@@ -12,8 +12,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <Header />
-        <Providers>{children}</Providers>
+        <div className="mx-auto flex max-w-7xl flex-col gap-8 p-4">
+          <Header />
+          <Providers>{children}</Providers>
+        </div>
       </body>
     </html>
   );

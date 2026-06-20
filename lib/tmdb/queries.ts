@@ -5,8 +5,8 @@ export async function getPopularMovies() {
   return tmdb("/movie/popular", movieListSchema);
 }
 
-export async function getTrendingMovies(timeWindow: "day" | "week") {
-  return tmdb(`/trending/movie/${timeWindow}`, movieListSchema);
+export async function getTrendingMovies(timeWindow: "day" | "week", page = 1) {
+  return tmdb(`/trending/movie/${timeWindow}`, movieListSchema, { page: String(page) });
 }
 
 export async function getMovieDetail(id: number) {

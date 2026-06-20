@@ -1,3 +1,9 @@
+import Hero from "@/components/Hero";
+
 export default function Home() {
-  return <main>CineSurf</main>;
+  return (
+    <main className="flex flex-col gap-8">
+      <Hero />
+    </main>
+  );
 }
