@@ -1,11 +1,16 @@
+import { cacheLife } from "next/cache";
 import { tmdb } from "./tmdb";
 import { movieListSchema, movieDetailSchema, genreListSchema } from "./schemas";
 
 export async function getPopularMovies() {
+  "use cache";
+  cacheLife("hours");
   return tmdb("/movie/popular", movieListSchema);
 }
 
 export async function getTrendingMovies(timeWindow: "day" | "week", page = 1) {
+  "use cache";
+  cacheLife("hours");
   return tmdb(`/trending/movie/${timeWindow}`, movieListSchema, { page: String(page) });
 }
 
@@ -18,6 +23,8 @@ export async function searchMovies(query: string, page = 1) {
 }
 
 export async function getGenres() {
+  "use cache";
+  cacheLife("max");
   return tmdb("/genre/movie/list", genreListSchema);
 }
 
