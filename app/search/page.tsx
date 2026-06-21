@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { searchMovies } from "@/lib/tmdb/queries";
 import MovieCard from "@/features/movies/MovieCard";
-
 type Props = {
   searchParams: Promise<{ q?: string; page?: string }>;
 };

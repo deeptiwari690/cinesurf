@@ -1,14 +1,14 @@
-import { getTrendingMovies } from "@/lib/tmdb/queries";
-import MovieRowSlider from "./MovieRowSlider";
-import TrendingToggle from "./TrendingToggle";
+import { getTrendingMovies } from "@/lib/tmdb/queries"
+import MovieRowSlider from "./MovieRowSlider"
+import TrendingToggle from "./TrendingToggle"
 
 type Props = {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
 
 export default async function TrendingRow({ searchParams }: Props) {
-  const timeWindow = (await searchParams).window === "day" ? "day" : "week";
-  const { results } = await getTrendingMovies(timeWindow);
+  const timeWindow = (await searchParams).window === "day" ? "day" : "week"
+  const { results } = await getTrendingMovies(timeWindow)
 
   return (
     <section>
@@ -18,5 +18,5 @@ export default async function TrendingRow({ searchParams }: Props) {
       </div>
       <MovieRowSlider movies={results} />
     </section>
-  );
+  )
 }

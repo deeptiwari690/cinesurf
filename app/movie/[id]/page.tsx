@@ -2,7 +2,6 @@ import { getMovieDetail } from "@/lib/tmdb/queries";
 import { formatDate } from "@/lib/tmdb/formatDate";
 import { getImageUrl } from "@/lib/tmdb/imageUrl";
 import Image from "next/image";
-
 type Props = {
   params: Promise<{ id: string }>;
 };

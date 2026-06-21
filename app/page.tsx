@@ -1,12 +1,12 @@
-import { Suspense } from "react";
-import Hero from "@/components/Hero";
-import PopularRow from "@/features/movies/PopularRow";
-import TrendingRow from "@/features/movies/TrendingRow";
-import MovieRowSkeleton from "@/components/ui/MovieRowSkeleton";
+import { Suspense } from "react"
+import Hero from "@/components/Hero"
+import PopularRow from "@/features/movies/PopularRow"
+import TrendingRow from "@/features/movies/TrendingRow"
+import MovieRowSkeleton from "@/components/ui/MovieRowSkeleton"
 
 type Props = {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
 
 export default function Home({ searchParams }: Props) {
   return (
@@ -19,7 +19,5 @@ export default function Home({ searchParams }: Props) {
         <PopularRow />
       </Suspense>
     </main>
-  );
+  )
 }
-
-
