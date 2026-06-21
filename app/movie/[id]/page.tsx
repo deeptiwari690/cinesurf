@@ -2,13 +2,24 @@ import { getMovieDetail } from "@/lib/tmdb/queries";
 import { formatDate } from "@/lib/tmdb/formatDate";
 import { getImageUrl } from "@/lib/tmdb/imageUrl";
 import Image from "next/image";
+import { notFound } from "next/navigation";
+import { TmdbError } from "@/lib/tmdb/tmdb";
+
 type Props = {
   params: Promise<{ id: string }>;
 };
 
 export default async function MoviePage({ params }: Props) {
   const { id } = await params;
-  const movie = await getMovieDetail(Number(id));
+  let movie;
+  
+  try {
+    movie = await getMovieDetail(Number(id));
+  } catch (error) {
+    if (error instanceof TmdbError && error.status === 404) notFound();
+    throw error;
+  }
+
   return (
     <main className="flex flex-col gap-6">
       <div className="relative h-96">

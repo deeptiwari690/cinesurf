@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { searchMovies } from "@/lib/tmdb/queries";
 import MovieCard from "@/features/movies/MovieCard";
+import EmptyView from "@/components/ui/EmptyView";
+
 type Props = {
   searchParams: Promise<{ q?: string; page?: string }>;
 };
@@ -8,6 +10,17 @@ type Props = {
 export default async function SearchPage({ searchParams }: Props) {
   const { q = "", page = "1" } = await searchParams;
   const data = await searchMovies(q, Number(page));
+
+  if (data.results.length === 0) {
+    return (
+      <main>
+        <EmptyView
+          title="No results found"
+          description={`We couldn't find anything for "${q}". Try different keywords.`}
+        />
+      </main>
+    );
+  }
 
   return (
     <main className="flex flex-col gap-6">
