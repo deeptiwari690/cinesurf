@@ -18,6 +18,8 @@ export const movieListSchema = z.object({
   total_results: z.number(),
 });
 
+export type MovieList = z.infer<typeof movieListSchema>;
+
 const genreSchema = z.object({ id: z.number(), name: z.string() });
 
 const videoSchema = z.object({
