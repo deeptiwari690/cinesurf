@@ -1,5 +1,5 @@
 import type { z } from "zod";
-const BASE_URL = "https://api.themoviedb.org/3";
+const BASE_URL = process.env.TMDB_BASE_URL!
 const ACCESS_TOKEN = process.env.TMDB_ACCESS_TOKEN!;
 
 export class TmdbError extends Error {
