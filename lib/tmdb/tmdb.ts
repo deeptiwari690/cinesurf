@@ -1,5 +1,6 @@
 import type { z } from "zod";
-const BASE_URL = "https://cinesurf-tmdb-proxy.vercel.app/api/tmdb";
+const BASE_URL = "https://api.themoviedb.org/3";
+const ACCESS_TOKEN = process.env.TMDB_ACCESS_TOKEN!;
 
 export class TmdbError extends Error {
   constructor(
@@ -20,7 +21,9 @@ export async function tmdb<S extends z.ZodType>(
   if (searchParams) {
     url.search = new URLSearchParams(searchParams).toString();
   }
-  const response = await fetch(url);
+  const response = await fetch(url, {
+    headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+  });
   if (!response.ok) {
     throw new TmdbError(response.status, `TMDB request failed: ${url}`);
   }
